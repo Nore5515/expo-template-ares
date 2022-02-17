@@ -1,16 +1,16 @@
 import HomeScene from "./scenes/homeScene"
 
-const public = [
+const public_routes = [
   { path: "/", exact: true, component: HomeScene }
 ]
 
-const private = [
+const private_routes = [
   { path: "/private-example", exact: true, component: HomeScene }
 ]
 
 const routes = {
-  public,
-  private
+  public: public_routes,
+  private: private_routes
 }
 
 export default routes;

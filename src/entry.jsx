@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Navigate, Outlet, Route } from "react-router-native";
+import { Navigate, Outlet, Route, Routes } from "react-router-native";
 import routes from "./routes";
 
 // ASSETS
@@ -19,23 +19,25 @@ const Entry = () => {
   return (
     <View style={Styles.container}>
       {/* ROUTES */}
-      {[routes.public, routes.private].map((rts, idx) => {
-        rts.map((route, index) => (
-          <Route
-            key={index}
-            exact={route.exact}
-            path={route.path}
-            /* idx: 0 = Public (false), 1 = Private (true) */
-            element={idx ? <RetrieveElement /> : <Outlet />}
-          >
+      <Routes>
+        {[routes.public, routes.private].map((rts, idx) =>
+          rts.map((route, index) => (
             <Route
-              path={route.path}
+              key={index}
               exact={route.exact}
-              element={<route.component />}
-            />
-          </Route>
-        ));
-      })}
+              path={route.path}
+              /* idx: 0 = Public (false), 1 = Private (true) */
+              element={idx ? <RetrieveElement /> : <Outlet />}
+            >
+              <Route
+                path={route.path}
+                exact={route.exact}
+                element={<route.component />}
+              />
+            </Route>
+          ))
+        )}
+      </Routes>
     </View>
   );
 };
