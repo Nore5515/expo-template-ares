@@ -1,6 +1,6 @@
 {
   "name": "expo-template-ares",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "node_modules/expo/AppEntry.js",
   "description": "Template to easily create new expo apps with routing.",
   "keywords": [
